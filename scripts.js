@@ -37,3 +37,10 @@ function calculateDiagram1() {
 
     document.getElementById("result-diagram1").innerText = result;
 }
+
+function goToStart() {
+    document.getElementById("step1").classList.remove("hidden");
+    document.getElementById("diagram1").classList.add("hidden");
+    document.getElementById("diagram2").classList.add("hidden");
+}
+
