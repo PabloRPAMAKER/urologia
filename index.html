@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo de Urología</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Protocolo Diagnóstico de Urología</h1>
+    </header>
+    <main>
+        <section id="step1">
+            <h2>Seleccione las pruebas disponibles</h2>
+            <button onclick="goToDiagram(1)">Solo PSA</button>
+            <button onclick="goToDiagram(2)">PSA + RMN</button>
+        </section>
+
+        <section id="diagram1" class="hidden">
+            <h2>Diagrama 1: Decisiones PSA y TR</h2>
+            <form id="form-diagram1">
+                <label for="tr">Tipo de Tacto Rectal:</label>
+                <select id="tr" required>
+                    <option value="TR+">Sospechoso (TR+)</option>
+                    <option value="TR-">Normal (TR-)</option>
+                </select>
+                <label for="psa">Valor de PSA:</label>
+                <select id="psa" required>
+                    <option value=">50">Mayor a 50</option>
+                    <option value="20-50">20 a 50</option>
+                    <option value="10-20">10 a 20</option>
+                    <option value="3-10">3 a 10</option>
+                </select>
+                <button type="button" onclick="calculateDiagram1()">Calcular</button>
+            </form>
+            <p id="result-diagram1"></p>
+        </section>
+
+        <section id="diagram2" class="hidden">
+            <h2>Diagrama 2: Decisiones PSA y RMN</h2>
+            <p>Próximamente...</p>
+        </section>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>
