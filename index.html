@@ -13,8 +13,8 @@
     <main>
         <section id="step1">
             <h2>Seleccione las pruebas disponibles</h2>
-            <button type="button"  onclick="goToDiagram(1)">Solo PSA</button>
-            <button type="button"  onclick="goToDiagram(2)">PSA + RMN</button>
+            <button class="btn-primary" data-diagram="1">Solo PSA</button>
+            <button class="btn-primary" data-diagram="2">PSA + RMN</button>
         </section>
 
         <section id="diagram1" class="hidden">
@@ -34,7 +34,7 @@
                     <option value="10-20">10 a 20</option>
                     <option value="3-10">3 a 10</option>
                 </select>
-                <button class="primary-button" onclick="calculateDiagram1()">Calcular</button>
+                <button type="submit" class="btn-success">Calcular</button>
             </form>
             <div id="result-container" class="hidden">
                 <h3>Diagnóstico</h3>
@@ -42,51 +42,51 @@
             </div>
             <div id="additional-question" class="hidden">
                 <p>¿Tiene al menos 2 PSA separados más de 3 meses?</p>
-                <button class="primary-button"  onclick="handleAdditionalQuestion(true)">Sí</button>
-                <button class="primary-button"  onclick="handleAdditionalQuestion(false)">No</button>
+                <button type="button" class="btn-success" data-answer="true">Sí</button>
+                <button type="button" class="btn-warning" data-answer="false">No</button>
             </div>
             <div class="buttons">
-                <button class="secondary-button" onclick="resetForm()">Reiniciar</button>
-                <button class="secondary-button" onclick="goToStart()">Volver al Inicio</button>
+                <button type="button" class="btn-warning reset-form">Reiniciar</button>
+                <button type="button" class="btn-warning go-start">Volver al Inicio</button>
             </div>
         </section>
 
         <section id="diagram2" class="hidden">
-    <h2>Diagrama 2: Decisiones PSA, RMN y TR</h2>
-    <form id="form-diagram2">
-        <label for="psa">Valor de PSA (numérico con decimal):</label>
-        <input type="number" id="psac" step="0.1" placeholder="Ingrese valor de PSA" required>
+            <h2>Diagrama 2: Decisiones PSA, RMN y TR</h2>
+            <form id="form-diagram2">
+                <label for="psa">Valor de PSA (numérico con decimal):</label>
+                <input type="number" id="psac" step="0.1" placeholder="Ingrese valor de PSA" required>
 
-        <label for="pirads">Valor PIRADS (RMN prostática):</label>
-        <select id="pirads" required>
-            <option value="" disabled selected>Seleccione el valor PIRADS</option>
-            <option value="1-2">PIRADS 1-2</option>
-            <option value="3">PIRADS 3</option>
-            <option value="4-5">PIRADS 4-5</option>
-        </select>
+                <label for="pirads">Valor PIRADS (RMN prostática):</label>
+                <select id="pirads" required>
+                    <option value="" disabled selected>Seleccione el valor PIRADS</option>
+                    <option value="1-2">PIRADS 1-2</option>
+                    <option value="3">PIRADS 3</option>
+                    <option value="4-5">PIRADS 4-5</option>
+                </select>
 
-        <label for="volumen">Volumen Prostático (última KMNP, con decimal):</label>
-        <input type="number" id="volumen" step="0.1" placeholder="Ingrese volumen prostático" required>
+                <label for="volumen">Volumen Prostático (última KMNP, con decimal):</label>
+                <input type="number" id="volumen" step="0.1" placeholder="Ingrese volumen prostático" required>
 
-        <label for="tract">Tacto Rectal:</label>
-        <select id="tract" required>
-            <option value="" disabled selected>Seleccione el tipo de TR</option>
-            <option value="Normal">Normal</option>
-            <option value="Lesión Benigna">Lesión benigna justificada por hallazgo RMN</option>
-            <option value="Sospechosa">Sospechosa</option>
-        </select>
+                <label for="tract">Tacto Rectal:</label>
+                <select id="tract" required>
+                    <option value="" disabled selected>Seleccione el tipo de TR</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Lesión Benigna">Lesión benigna justificada por hallazgo RMN</option>
+                    <option value="Sospechosa">Sospechosa</option>
+                </select>
 
-        <button class="primary-button" onclick="calculateDiagram2()">Calcular</button>
-    </form>
-    <div id="result-container2" class="hidden">
-        <h3>Diagnóstico</h3>
-        <p id="result-diagram2"></p>
-    </div>
-    <div class="buttons">
-        <button class="secondary-button" onclick="resetForm2()">Reiniciar</button>
-        <button class="secondary-button" onclick="goToStart()">Volver al Inicio</button>
-    </div>
-</section>
+                <button type="submit" class="btn-success">Calcular</button>
+            </form>
+            <div id="result-container2" class="hidden">
+                <h3>Diagnóstico</h3>
+                <p id="result-diagram2"></p>
+            </div>
+            <div class="buttons">
+                <button type="button" class="btn-warning reset-form">Reiniciar</button>
+                <button type="button" class="btn-warning go-start">Volver al Inicio</button>
+            </div>
+        </section>
     </main>
     <script src="scripts.js"></script>
 </body>

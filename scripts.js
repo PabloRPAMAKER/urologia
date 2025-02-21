@@ -49,9 +49,6 @@ function calculateDiagram1() {
     // document.getElementById("additional-question").classList.add("hidden");
 }
 
-
-
-
 // Volver al inicio
 function resetForm() {
     document.getElementById("form-diagram1").reset(); // Limpia el formulario
@@ -140,6 +137,69 @@ function calculateDiagram2() {
     document.getElementById("result-diagram2").innerText = `DPSA: ${dpsa.toFixed(2)}\nDiagnóstico: ${result}`;
     document.getElementById("result-container2").classList.remove("hidden");
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Manejador para los botones iniciales
+    document.querySelectorAll('[data-diagram]').forEach(button => {
+        button.addEventListener('click', function() {
+            const diagramNum = this.dataset.diagram;
+            showDiagram(diagramNum);
+        });
+    });
+
+    // Manejador para el formulario 1
+    document.getElementById('form-diagram1').addEventListener('submit', function(e) {
+        e.preventDefault();
+        calculateDiagram1();
+    });
+
+    // Manejador para el formulario 2
+    document.getElementById('form-diagram2').addEventListener('submit', function(e) {
+        e.preventDefault();
+        calculateDiagram2();
+    });
+
+    // Manejador para botones de pregunta adicional
+    document.querySelectorAll('[data-answer]').forEach(button => {
+        button.addEventListener('click', function() {
+            const answer = this.dataset.answer === 'true';
+            handleAdditionalQuestion(answer);
+        });
+    });
+
+    // Manejador para botones de reinicio
+    document.querySelectorAll('.reset-form').forEach(button => {
+        button.addEventListener('click', function() {
+            const form = this.closest('section').querySelector('form');
+            form.reset();
+            hideResults();
+        });
+    });
+
+    // Manejador para botones de volver al inicio
+    document.querySelectorAll('.go-start').forEach(button => {
+        button.addEventListener('click', goToStart);
+    });
+});
+
+function showDiagram(num) {
+    document.querySelectorAll('section').forEach(section => section.classList.add('hidden'));
+    document.getElementById(`diagram${num}`).classList.remove('hidden');
+}
+
+function hideResults() {
+    document.querySelectorAll('#result-container, #result-container2, #additional-question').forEach(el => {
+        el.classList.add('hidden');
+    });
+}
+
+function goToStart() {
+    document.querySelectorAll('section').forEach(section => section.classList.add('hidden'));
+    document.getElementById('step1').classList.remove('hidden');
+    document.querySelectorAll('form').forEach(form => form.reset());
+    hideResults();
+}
+
 document.querySelectorAll('.option-button').forEach(button => {
     button.addEventListener('click', () => {
         // Quitar la clase active de todos los botones
